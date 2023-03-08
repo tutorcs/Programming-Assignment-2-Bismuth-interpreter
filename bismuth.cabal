@@ -1,0 +1,91 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:           bismuth
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/bismuth#readme>
+homepage:       https://github.com/maemre/bismuth#readme
+bug-reports:    https://github.com/maemre/bismuth/issues
+author:         Mehmet Emre
+maintainer:     memre@usfca.edu
+copyright:      2023 Mehmet Emre
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/maemre/bismuth
+
+library
+  exposed-modules:
+      Color
+      Domains
+      Eval
+      Example
+      Image
+      Parser
+      Point
+      Rendering
+      Syntax
+      Util
+  other-modules:
+      Paths_bismuth
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wno-missing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-signatures
+  build-depends:
+      JuicyPixels
+    , base >=4.7 && <5
+    , containers >=0.6.5.1 && <1
+    , mtl >=2.2 && <2.4
+    , optparse-applicative
+    , parsec
+  default-language: Haskell2010
+
+executable bismuth-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_bismuth
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wno-missing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      JuicyPixels
+    , base >=4.7 && <5
+    , bismuth
+    , containers >=0.6.5.1 && <1
+    , mtl >=2.2 && <2.4
+    , optparse-applicative
+    , parsec
+  default-language: Haskell2010
+
+test-suite bismuth-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Classes
+      ColorSpec
+      HandwrittenSpec
+      ImageSpec
+      PointSpec
+      Paths_bismuth
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wno-missing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-signatures -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      JuicyPixels
+    , QuickCheck
+    , base >=4.7 && <5
+    , bismuth
+    , containers >=0.6.5.1 && <1
+    , hspec
+    , mtl >=2.2 && <2.4
+    , optparse-applicative
+    , parsec
+  default-language: Haskell2010

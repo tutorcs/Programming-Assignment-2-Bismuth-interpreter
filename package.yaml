@@ -1,0 +1,66 @@
+name:                bismuth
+version:             0.1.0.0
+github:              "maemre/bismuth"
+license:             BSD3
+author:              "Mehmet Emre"
+maintainer:          "memre@usfca.edu"
+copyright:           "2023 Mehmet Emre"
+
+extra-source-files:
+- README.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/githubuser/bismuth#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- containers >= 0.6.5.1 && < 1
+- parsec
+- mtl >= 2.2 && < 2.4 
+- optparse-applicative
+- JuicyPixels
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wno-missing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
+- -Wno-missing-signatures
+
+library:
+  source-dirs: src
+
+executables:
+  bismuth-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - bismuth
+
+tests:
+  bismuth-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - bismuth
+    - hspec
+    - QuickCheck
